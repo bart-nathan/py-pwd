@@ -2,18 +2,37 @@
 
 import os
 import sys
+import sqlite3
 
+def exec_db(sql_statement):
+
+        result = []
+
+        conn = sqlite3.connect('pwmdb.db')
+        cur = conn.cursor()
+        cur.execute(sql_statement)
+
+        for item in cur:
+            result.append(item)
+
+        conn.close()
+
+        return result;
 
 if __name__ == "__main__":
 
     try:
-        
+
         command = sys.argv[1]
 
         if command == "list":
 
-            print("list records")
-        
+            result = exec_db("select * from record");
+
+            for item in result:
+
+                print(item)
+               
         elif command == "get":
 
             print("Get command")
@@ -29,15 +48,7 @@ if __name__ == "__main__":
             
             prinf("No command is found :-(")
 
-    except:
-        print("error :-)")
-
-    
-
- 
-
-    
-    
-    
+    except Exception as ex:
+        print(ex)
     
     print("Ok\n");
