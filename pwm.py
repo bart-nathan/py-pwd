@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
             for item in result:
 
-                print("%s | %s | %s" % (item[0], item[1], item[2]))
+                print("%s   |   %s  | %s" % (item[0], item[1], item[2]))
                
         elif command == "insert":
 
@@ -58,17 +58,35 @@ if __name__ == "__main__":
 
         elif command == "update":
 
-            print("updatecommand")
+            id = sys.argv[2]
+
+            if id != 0:
+
+                sitename = sys.argv[3]
+                username = sys.argv[4]
+                password = sys.argv[5]
+                link = sys.argv[6]
+
+                sql = "update record set sitename = '%s', username = '%s', password = '%s', link = '%s' where id = %s " % (sitename, username, password, link, id)
+                print(sql)
+                exec_db(sql)
+            
+        
         
         elif command == "delete":
 
-            print("delete command")
+           id = sys.argv[2]
+
+           if id != 0:
+               
+               exec_db("delete from record where id = %s" % id)
+
 
         elif command == "create":
 
             table = "create table record (id integer not null primary key autoincrement,sitename varchar(100) not null,username varchar(100) not null,password varchar(100) not null,link varchar(300) not null);"
             exec_db(table)
-
+            
         else:
             
             print("No command is found :-(")
