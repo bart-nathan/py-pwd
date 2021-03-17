@@ -11,10 +11,15 @@ def exec_db(sql_statement):
         conn = sqlite3.connect('pwmdb.db')
         cur = conn.cursor()
         cur.execute(sql_statement)
-        conn.commit()
-    
-        for item in cur:
-            result.append(item)
+
+        if sql_statement[0] == 'i' or sql_statement[0] == 'd' or sql_statement[0] == 'u':
+            conn.commit()
+        
+        elif sql_statement[0] == 's':
+            print("select stat")
+
+            for item in cur:
+                result.append(item)
 
         conn.close()
 
