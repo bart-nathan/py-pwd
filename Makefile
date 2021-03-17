@@ -1,2 +1,2 @@
 all:
-	python pwm.py list
+	python pwm.py insert

@@ -33,6 +33,10 @@ if __name__ == "__main__":
 
                 print(item)
                
+        elif command == "insert":
+
+            print("insert command is here :-)")
+        
         elif command == "get":
 
             print("Get command")
