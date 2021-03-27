@@ -22,7 +22,7 @@ def exec_db(sql_statement):
 
         conn.close()
 
-        return result;
+        return result
 
 if __name__ == "__main__":
 
@@ -71,7 +71,6 @@ if __name__ == "__main__":
                 print(sql)
                 exec_db(sql)
             
-        
         
         elif command == "delete":
 
